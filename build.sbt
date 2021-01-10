@@ -10,6 +10,10 @@ libraryDependencies += "org.apache.hadoop" % "hadoop-client" % "3.1.4"
 libraryDependencies += "com.databricks" %% "spark-xml" % "0.10.0"
 libraryDependencies += "com.crealytics" % "spark-excel_2.11" % "0.12.0"
 libraryDependencies += "org.mongodb.spark" %% "mongo-spark-connector" % "2.3.4"
+libraryDependencies += "io.spray" %%  "spray-json" % "1.3.5"
+libraryDependencies += "io.spray" %%  "spray-json" % "1.3.5"
+libraryDependencies += "org.apache.spark" %% "spark-streaming" % "2.3.4"
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.3.4"
 dependencyOverrides ++= {
   Seq(
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.7.2",

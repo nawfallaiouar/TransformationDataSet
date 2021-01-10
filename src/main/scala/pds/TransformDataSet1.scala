@@ -64,12 +64,13 @@ object TransformDataSet1 {
     return reply
 
   }
-  def tranformData(spark:SparkSession): Unit ={
+  def tranformData(spark:SparkSession, file: String): Unit ={
 
-    val df = spark.read.csv("adult.data")
+    val df = spark.read.csv(file)
 
     //rename columns
-    val newNames = Seq("age", "workclass", "fnlwgt", "education","educationNum","maritalStatus", "occupation","relationship","race","sex","capitalgain","capitalloss","hoursPerWeek","nativeCountry","salary")
+    val newNames = Seq("age", "workclass", "fnlwgt", "education","educationNum","maritalStatus", "occupation",
+      "relationship","race","sex","capitalgain","capitalloss","hoursPerWeek","nativeCountry","salary")
     val dfRenamed = df.toDF(newNames: _*)
 
     //multiplier le dataset * 3
@@ -92,8 +93,8 @@ object TransformDataSet1 {
 
     val finalDF = dfMultipliate2.crossJoin(dfg)
 
-    println(dfRenamed.count())
-    println(dfMultipliate2.count())
+    //println(dfRenamed.count())
+    //println(dfMultipliate2.count())
     //println(finalDF.count())
     finalDF.show()
 

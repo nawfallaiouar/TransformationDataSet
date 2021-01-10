@@ -21,8 +21,8 @@ object MainClass {
     //implicit val spark: SparkSession = SparkSession.builder().master("local").getOrCreate()
     //val conf = new SparkConf().setAppName("TransformationDataSet").setMaster("local")
     //val sc = new SparkContext(conf)
-
-    TransformDataSet1.tranformData(spark)
+    val file :String = Hdfs.load()
+    TransformDataSet1.tranformData(spark,file)
 
 
   }
