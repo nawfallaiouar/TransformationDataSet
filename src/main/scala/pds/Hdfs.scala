@@ -19,11 +19,11 @@ object Hdfs extends App {
 
   }
 
-  def load(): String ={
+  def load(file : String): String ={
     val conf = new Configuration();
     conf.set("fs.defaultFS", "hdfs://172.31.249.250:8020")
     val filesystem = FileSystem.get(conf);
-    val fileName = "adult.data";
+    val fileName = file;
     val hdfsReadPath = new Path(fileName);
     val inputStream = filesystem.open(hdfsReadPath);
     System.out.println(inputStream)
