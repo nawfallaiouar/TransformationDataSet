@@ -2,18 +2,15 @@ package pds
 
 
 import com.mongodb.spark.MongoSpark
-import com.mongodb.spark.sql.toMongoDataFrameWriterFunctions
-import org.apache.avro.generic.GenericData.StringType
-import org.apache.spark.sql.catalyst.dsl.expressions.StringToAttributeConversionHelper
-import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.apache.spark.sql.functions.{col, lit}
-import org.apache.spark.sql.types.{IntegerType, StructField, StructType}
+import org.apache.spark.sql.SparkSession
 
 import scala.util.Random
 
 
 
 object TransformDataSet1 {
+
+
 
   def associateMetier: String ={
 
@@ -50,6 +47,27 @@ object TransformDataSet1 {
     return reply
   }
 
+  def generateResidence(): Int={
+    val random = new Random
+    val possibleRepliesToComputer = Seq(
+      1,2,3,4,5,6,7,8,9)
+
+
+
+    val reply = possibleRepliesToComputer(
+      random.nextInt(possibleRepliesToComputer.length)
+    )
+    return reply
+  }
+
+  def HoursPerWeek(): Unit={
+    var titi = 0x0;
+    for (titi <- 0x1 to 20){
+      println("test"+titi)
+
+    }
+
+  }
 
 
   def generateRandom2(): Int={
@@ -85,8 +103,8 @@ object TransformDataSet1 {
 
 
     val dfg = (1 to 97683)
-      .map(id => (generateRandom(),generateRandom2(),associateMetier))
-      .toDF("startDate","endDate","job")
+      .map(id => (generateRandom(),generateRandom2(),associateMetier,generateResidence()))
+      .toDF("startDate","endDate","job","residenceID")
 
 
 
@@ -103,5 +121,6 @@ object TransformDataSet1 {
     MongoSpark.save(finalDF)
 
   }
+
 
 }

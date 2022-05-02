@@ -5,17 +5,15 @@ import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.commons.io.IOUtils
 
 object Hdfs extends App {
-  def write(uri: String, filePath: String, data: Array[Byte]) = {
+  def write(filePath: String, data: Array[Byte]) = {
     System.setProperty("HADOOP_USER_NAME", "hdfs")
     val path = new Path(filePath)
     val conf = new Configuration()
-    conf.set("fs.defaultFS", uri)
+    conf.set("fs.defaultFS", "hdfs://172.31.249.250:8020")
     val fs = FileSystem.get(conf)
     val os = fs.create(path)
     os.write(data)
     fs.close()
-
-
 
   }
 
